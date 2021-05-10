@@ -4,6 +4,7 @@ Progressive Web App on plain javascript
 ## How to run
 
 to run do:
+
 npm install
 
 npm install --include=dev
