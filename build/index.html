@@ -15,9 +15,15 @@
     </div>
     <script src="main.js"></script>
     <script>
-        if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("./sw.js");
-        }
-    </script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./service-worker.js").then((registration) => {
+          console.log("Fue registrado con scope: ", registration.scope)
+        }).catch((e) => {
+          console.log("Service worker failed", e)
+        })
+      }
+  </script>
+  <script src="../js/firebase.js"></script>
+  <script src="../js/notification.js"></script>
   </body>
 </html>
