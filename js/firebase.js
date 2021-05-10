@@ -10,5 +10,8 @@ import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 
+
+firebase.initializeApp()
+
 const firebase1 = "hol22a" 
 export default firebase1

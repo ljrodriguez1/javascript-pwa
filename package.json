@@ -15,7 +15,8 @@
   "dependencies": {
     "eslint": "^7.26.0",
     "firebase": "^8.5.0",
-    "serve": "^11.3.2"
+    "serve": "^11.3.2",
+    "source-map-loader": "^2.0.1"
   },
   "devDependencies": {
     "webpack": "^5.36.2",
