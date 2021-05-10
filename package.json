@@ -2,14 +2,24 @@
   "name": "tarea4-pwa",
   "version": "1.0.0",
   "description": "Progresive web app made with plain javascript",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "serve ."
+    "serve": "serve .",
+    "dev": "webpack --watch --mode=development",
+    "prod": "webpack --mode=production",
+    "build": "webpack"
+
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "eslint": "^7.26.0",
+    "firebase": "^8.5.0",
     "serve": "^11.3.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.7.0"
   }
 }

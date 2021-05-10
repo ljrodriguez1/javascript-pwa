@@ -1,8 +1,4 @@
-window.onload = () => {
-  "use strict";
+import firebase from "./firebase"
 
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js");
-    console.log('hola')
-  }
-};
+console.log(firebase)
+console.log("holaaa")
