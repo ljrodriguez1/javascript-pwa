@@ -4,11 +4,16 @@ const messaging = firebase.messaging();
 
 messaging.requestPermission().then(function () {
     console.log('Have Permission');
-    return messaging.getToken();
+    return messaging.getToken({ vapidKey: 'BKYPTjqCHiB7E-smNWiaz8ktJ84yJepq8O6c0v5bvHZfPc88lmVV1fZRcwxwiiZsyNjH6WgZUlEUTMCO-2DVy_w' });
   }.then(
       (token) => {
-          console.log("SEND TOKEN TO FIRESTORE")
-          sendSubscriptionIDToFirestore(token)
+          if (token) {
+            console.log("SEND TOKEN TO FIRESTORE")
+            sendSubscriptionIDToFirestore(token)
+          }
+          else {
+            console.log('No registration token available. Request permission to generate one.');
+          }
       }
   )
 ). catch( (error) => {
