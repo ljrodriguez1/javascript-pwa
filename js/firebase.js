@@ -10,8 +10,18 @@ import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 
+var firebaseConfig = {
+    apiKey: "AIzaSyD2eR7xpxrAOk320MjWSaQdu4_y2aVxA4s",
+    authDomain: "pwa-reich.firebaseapp.com",
+    databaseURL: "https://pwa-reich-default-rtdb.firebaseio.com",
+    projectId: "pwa-reich",
+    storageBucket: "pwa-reich.appspot.com",
+    messagingSenderId: "213332410499",
+    appId: "1:213332410499:web:3bdcfd4d86a53bf7919bb6"
+  };
 
-firebase.initializeApp()
+firebase.initializeApp(firebaseConfig);
 
-const firebase1 = "hol22a" 
-export default firebase1
+const db = firebase.firestore();
+
+export default db;

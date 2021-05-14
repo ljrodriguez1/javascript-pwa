@@ -16,8 +16,30 @@ html,
 /* Center the content in the browser window */
 .container {
   margin: auto;
+  background-color: aqua;
+  width: 50vh;
+  height: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .title {
   font-size: 3rem;
+}
+
+.form-login{
+  background-color: rgb(187, 255, 0);
+  height: 50%;
+  width: 90%;
+}
+
+#exampleInputPassword1{
+  margin-top: 10%;
+}
+
+#logIn{
+  margin-top: 10%;
 }
