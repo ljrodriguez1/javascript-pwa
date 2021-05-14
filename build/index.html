@@ -9,11 +9,10 @@
     <link rel="manifest" href="/manifest.json" />
     <link rel="apple-touch-icon" href="images/pwa-icon-256.png" />
     <meta name="theme-color" content="white" />
-    <script src="main.js"></script>
-    <script src="signUp.js"></script>
+    
     <script>
         if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("./service-worker.js");
+          navigator.serviceWorker.register("./sw.js");
         }
     </script>
   </head>
@@ -31,5 +30,7 @@
         <button type="submit" id="signup" class="btn btn-primary">Submit</button>
       </form>
     </div>
+    <script src="main.js"></script>
+    <script type="module" src="signUp.js"></script>
   </body>
 </html>

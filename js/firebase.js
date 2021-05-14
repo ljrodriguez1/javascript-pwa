@@ -23,5 +23,42 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
+/////////////////////////////
+function check_signup(email, password) {
+  console.log("ACA?")
 
-export default db;
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+      // Signed in
+      var user = userCredential.user;
+      console.log("YEY")
+      console.log(user)
+      // ...
+  })
+  .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log("MALO", errorCode, errorMessage)
+      // ..
+  });
+}
+/////////////////////////////
+
+
+function check_login(email, password) {
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+        // Signed in
+        var user = userCredential.user;
+        // ...
+    })
+    .catch((error) => {
+        document.getElementById('error').innerHTML= "Wrong password"
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+    });
+}
+
+export {db, check_signup, check_login};
