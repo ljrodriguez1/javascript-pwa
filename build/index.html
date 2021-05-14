@@ -15,10 +15,13 @@
     </div>
     <script src="main.js"></script>
     <script>
-        if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("./sw.js");
-          console.log('ServiceWorker registration successful');
-        }
-    </script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./service-worker.js").then((registration) => {
+          console.log("Fue registrado con scope: ", registration.scope)
+        }).catch((e) => {
+          console.log("Service worker failed", e)
+        })
+      }
+  </script>
   </body>
 </html>
