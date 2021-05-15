@@ -5,11 +5,18 @@ importScripts('https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/8.4.1/firebase-messaging.js');
 
 let cacheName = "my-first-pwa";
-let filesToCache = ["/", "/index.html", "/css/style.css", "main.js"];
+let filesToCache = ["/", "/index.html", "/main_page.html","/css/style.css", "main.js"];
 
 
 /* Start the service worker and cache all of the app's content */
 self.addEventListener("install", (e) => {
+
+  e.waitUntil(
+    caches.open(cacheName).then(function (cache) {
+      return cache.addAll(filesToCache);
+    })
+  );
+
   var firebaseConfig = {
     apiKey: "AIzaSyD2eR7xpxrAOk320MjWSaQdu4_y2aVxA4s",
     authDomain: "pwa-reich.firebaseapp.com",
@@ -49,12 +56,6 @@ self.addEventListener("install", (e) => {
     self.registration.showNotification(notificationTitle,
       notificationOptions);
   });
-
-  e.waitUntil(
-    caches.open(cacheName).then(function (cache) {
-      return cache.addAll(filesToCache);
-    })
-  );
 });
 
 /* Serve cached content when offline */
@@ -64,4 +65,4 @@ self.addEventListener("install", (e) => {
 //      return response || fetch(e.request);
 //    })
 //  );
-//});
+//})
