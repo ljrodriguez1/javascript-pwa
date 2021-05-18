@@ -1,4 +1,5 @@
-import check_signup from './main.js';
+require('./main.js');
+
 submit_signup = document.getElementById('signup')
 console.log("YAPO CTM")
 email = document.getElementById('exampleInputEmail1')
