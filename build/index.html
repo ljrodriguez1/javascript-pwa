@@ -17,7 +17,7 @@
     <script src="main.js"></script>
     <script>
       if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("./service-worker.js").then((registration) => {
+        navigator.serviceWorker.register("./firebase-messaging-sw.js").then((registration) => {
           console.log("Fue registrado con scope: ", registration.scope)
         }).catch((e) => {
           console.log("Service worker failed", e)

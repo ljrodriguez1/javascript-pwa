@@ -1,10 +1,19 @@
-// import {db, firebase} from './firebase';
+import {db, messaging} from './firebase';
 
 // const messaging = firebase.messaging();
 
+messaging
+ .requestPermission()
+ .then(function () {
+    console.log("Notification permission granted.");
+ })
+ .catch(function (err) {
+    console.log("Unable to get permission to notify.", err);
+  });
+
+
 messaging.getToken({
-    vapidKey: 'BKYPTjqCHiB7E-smNWiaz8ktJ84yJepq8O6c0v5bvHZfPc88lmVV1fZRcwxwiiZsyNjH6WgZUlEUTMCO-2DVy_w',
-    serviceWorkerRegistration: "service-worker.js" }).then(
+    vapidKey: 'BKYPTjqCHiB7E-smNWiaz8ktJ84yJepq8O6c0v5bvHZfPc88lmVV1fZRcwxwiiZsyNjH6WgZUlEUTMCO-2DVy_w'}).then(
       (token) => {
           if (token) {
             console.log("SEND TOKEN TO FIRESTORE")

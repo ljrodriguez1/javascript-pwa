@@ -9,6 +9,7 @@ import "firebase/analytics";
 // Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/messaging";
 
 var firebaseConfig = {
     apiKey: "AIzaSyD2eR7xpxrAOk320MjWSaQdu4_y2aVxA4s",
@@ -24,6 +25,5 @@ if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
 
-const db = firebase.firestore();
-
-export default db;
+export const db = firebase.firestore();
+export const messaging = firebase.messaging()
