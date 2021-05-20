@@ -9,6 +9,7 @@ import "firebase/analytics";
 // Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/firestore";
+import { type } from "jquery";
 
 var firebaseConfig = {
     apiKey: "AIzaSyD2eR7xpxrAOk320MjWSaQdu4_y2aVxA4s",
@@ -27,12 +28,11 @@ if (firebase.apps.length === 0) {
 
 const db = firebase.firestore();
 /////////////////////////////
-async function check_signup(email, password) {
-  console.log("ACA?")
+function check_signup(email, password) {
   console.log(firebase)
   console.log("EMAIL", email)
   console.log("PASSWORD", password)
-  const user = await firebase.auth().createUserWithEmailAndPassword(email, password)
+  const user = firebase.auth().createUserWithEmailAndPassword(email, password)
   .then((userCredential) => {
       // Signed inxs
       console.log("????")
@@ -50,6 +50,11 @@ async function check_signup(email, password) {
       return null
       // ..
   });
+  const user2 = current_user();
+  console.log(typeof user2)
+  console.log("$", user2)
+  console.log("????")
+  console.log(user.uid)
   console.log("NO DEBERIA SER ACA")
   return user
 }
@@ -71,6 +76,18 @@ function current_user() {
     }
   });
 }
+
+// function current_user() {
+//   var user = firebase.auth().currentUser;
+
+//   if (user) {
+//     // User is signed in.
+//     return user
+//   } else {
+//     // No user is signed in.
+//     console.log("NOBODY HERE")
+//   }
+// }
 
 /////////////////////////////
 
