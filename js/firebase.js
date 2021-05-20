@@ -20,45 +20,117 @@ var firebaseConfig = {
     appId: "1:213332410499:web:3bdcfd4d86a53bf7919bb6"
   };
 
-firebase.initializeApp(firebaseConfig);
+if (firebase.apps.length === 0) {
+  console.log("WII")
+  firebase.initializeApp(firebaseConfig);
+}
 
 const db = firebase.firestore();
 /////////////////////////////
-function check_signup(email, password) {
+async function check_signup(email, password) {
   console.log("ACA?")
-
-  firebase.auth().createUserWithEmailAndPassword(email, password)
+  console.log(firebase)
+  console.log("EMAIL", email)
+  console.log("PASSWORD", password)
+  const user = await firebase.auth().createUserWithEmailAndPassword(email, password)
   .then((userCredential) => {
-      // Signed in
+      // Signed inxs
+      console.log("????")
       var user = userCredential.user;
       console.log("YEY")
       console.log(user)
+      return user
       // ...
   })
   .catch((error) => {
+      console.log("DALEEEE")
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log("MALO", errorCode, errorMessage)
+      return null
       // ..
   });
+  console.log("NO DEBERIA SER ACA")
+  return user
 }
 /////////////////////////////
 
 
-function check_login(email, password) {
+function current_user() {
 
-    firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-        // Signed in
-        var user = userCredential.user;
-        // ...
-    })
-    .catch((error) => {
-        document.getElementById('error').innerHTML= "Wrong password"
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorCode, errorMessage)
-    });
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      let user_id = user.uid
+      console.log("ID", user_id)
+      return user
+    } else {
+      // No user is signed in.
+      console.log("NOBODY IS SIGNED IN")
+      return null
+    }
+  });
 }
 
-export {db, check_signup, check_login};
+/////////////////////////////
+
+function sign_in(email, password){
+  const user = firebase.auth().signInWithEmailAndPassword(email, password).then(
+    function(user){
+      console.log("HAY USUARIO")
+      console.log(user)
+      return user;
+
+    }
+  ).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+    return null;
+});
+return user;
+
+}
+
+/////////////////////////////
+
+async function sign_out() {
+  console.log("OUTTT")
+  const nose = await firebase.auth().signOut().then(() => {
+    // Sign-out successful.
+    console.log("??!!")
+    return true
+  }).catch((error) => {
+    // An error happened.
+    console.log("EEOR", error)
+    return false
+  });
+  console.log("VEAMOS EL ONOSE", nose)
+  return nose
+}
+
+/////////////////////////////
+
+firebase.auth().onAuthStateChanged(function(user) {
+  console.log("EL USER", user)
+  if (user) {
+    // User is signed in.
+    console.log("WOWW")
+    var displayName = user.displayName;
+    var email = user.email;
+    var emailVerified = user.emailVerified;
+    var photoURL = user.photoURL;
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    var providerData = user.providerData;
+    // ...
+  } else {
+    console.log("SIGNED OUT")
+    // User is signed out.
+    // ...
+  }
+});
+
+export {db, check_signup, sign_out, sign_in, current_user};

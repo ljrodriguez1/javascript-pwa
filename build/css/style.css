@@ -7,6 +7,7 @@ body {
 html,
 .fullscreen {
   display: flex;
+  flex-direction: row;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -23,7 +24,54 @@ html,
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.left-container {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100%;
+  -webkit-box-shadow: 10px 10px 6px -6px #777;
+  -moz-box-shadow: 10px 10px 6px -6px #777;
+  box-shadow: 10px 10px 6px -6px #777;
+  background-color: white;
+}
 
+.right-container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #c5e2f6;
+}
+
+.actual-user {
+  height: 8%;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.chat-container {
+  height: 87%;
+  width: 100%;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  height: 5%;
+  width: 100%;
+  background-color: white;
+}
+
+input {
+  width: 80%;
+}
+
+button {
+  width: 20%;
 }
 
 .title {
@@ -42,4 +90,21 @@ html,
 
 #logIn{
   margin-top: 10%;
+}
+img {
+  border-radius: 50%;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  border-bottom: 1px solid gray;
+}
+
+@media screen and (min-width: 501px) {
+  .user {
+    display: flex;
+    flex-direction: row;
+  }
 }

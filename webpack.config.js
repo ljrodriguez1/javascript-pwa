@@ -5,7 +5,7 @@ const { SourceMapDevToolPlugin } = require("webpack");
 module.exports = {
   entry: './js/main.js',
   output: {
-    filename: 'ctm.js',
+    filename: 'main.js',
     path: path.resolve(__dirname, 'build'),
   },
   module: {

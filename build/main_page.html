@@ -1,0 +1,45 @@
+<head>
+  <title>WhatsOffline Chat</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="images/pwa-icon-256.png" />
+  <meta name="theme-color" content="white" />
+</head>
+
+<body class="fullscreen"></body>
+  <div class="left-container">
+    <div>
+      <h2>
+        User
+      </h2>
+    </div>
+    <div class="user">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" width="45px" height="45px">
+      <p>Pablo</p>
+    </div>
+    <div class="user">
+      <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" width="45px" height="45px">
+      <p>Jenny</p>
+    </div>
+    <div class="user">
+      <button id="sign-out">Sign Out</p>
+    </div>
+  </div>
+  
+  <div class="right-container">
+    <div class="actual-user">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" width="45px" height="45px">
+      <p id="current-user"></p>
+    </div>
+    <div id="chatList" class="chat-container">
+    </div>
+    <div class="input-container">
+      <input id="chatInput" type="text">
+      <button id="chatButton">
+        Enviar
+      </button>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
