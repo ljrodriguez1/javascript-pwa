@@ -9,7 +9,7 @@ import "firebase/analytics";
 // Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/firestore";
-import { type } from "jquery";
+
 
 var firebaseConfig = {
     apiKey: "AIzaSyD2eR7xpxrAOk320MjWSaQdu4_y2aVxA4s",
@@ -61,33 +61,32 @@ function check_signup(email, password) {
 /////////////////////////////
 
 
+//function current_user() {
+//
+//  firebase.auth().onAuthStateChanged(function(user) {
+//    if (user) {
+//      // User is signed in.
+//      let user_id = user.uid
+//      console.log("ID", user_id)
+//      return user
+//    } else {
+//      // No user is signed in.
+//      console.log("NOBODY IS SIGNED IN")
+//      return null
+//    }
+//  });
+//}
+
 function current_user() {
-
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-      let user_id = user.uid
-      console.log("ID", user_id)
-      return user
-    } else {
-      // No user is signed in.
-      console.log("NOBODY IS SIGNED IN")
-      return null
-    }
-  });
+  var user = firebase.auth().currentUser
+  if (user) {
+    // User is signed in.
+    return user
+  } else {
+    // No user is signed in.
+    console.log("NOBODY HERE")
+  }
 }
-
-// function current_user() {
-//   var user = firebase.auth().currentUser;
-
-//   if (user) {
-//     // User is signed in.
-//     return user
-//   } else {
-//     // No user is signed in.
-//     console.log("NOBODY HERE")
-//   }
-// }
 
 /////////////////////////////
 
@@ -130,24 +129,5 @@ async function sign_out() {
 
 /////////////////////////////
 
-firebase.auth().onAuthStateChanged(function(user) {
-  console.log("EL USER", user)
-  if (user) {
-    // User is signed in.
-    console.log("WOWW")
-    var displayName = user.displayName;
-    var email = user.email;
-    var emailVerified = user.emailVerified;
-    var photoURL = user.photoURL;
-    var isAnonymous = user.isAnonymous;
-    var uid = user.uid;
-    var providerData = user.providerData;
-    // ...
-  } else {
-    console.log("SIGNED OUT")
-    // User is signed out.
-    // ...
-  }
-});
 
-export {db, check_signup, sign_out, sign_in, current_user};
+export {db, check_signup, sign_out, sign_in, current_user, firebase};
