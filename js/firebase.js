@@ -61,33 +61,35 @@ function check_signup(email, password) {
 /////////////////////////////
 
 
-function current_user() {
-
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-      let user_id = user.uid
-      console.log("ID", user_id)
-      return user
-    } else {
-      // No user is signed in.
-      console.log("NOBODY IS SIGNED IN")
-      return null
-    }
-  });
-}
-
 // function current_user() {
-//   var user = firebase.auth().currentUser;
 
-//   if (user) {
-//     // User is signed in.
-//     return user
-//   } else {
-//     // No user is signed in.
-//     console.log("NOBODY HERE")
-//   }
+//   firebase.auth().onAuthStateChanged(function(user) {
+//     if (user) {
+//       // User is signed in.
+//       let user_id = user.uid
+//       console.log("ID", user_id)
+//       return user
+//     } else {
+//       // No user is signed in.
+//       console.log("NOBODY IS SIGNED IN")
+//       return null
+//     }
+//   });
 // }
+
+function current_user() {
+  var user = firebase.auth().currentUser;
+
+  if (user) {
+    console.log("USER", user)
+    // User is signed in.
+    return user
+  } else {
+    // No user is signed in.
+    console.log("NOBODY HERE")
+    return null
+  }
+}
 
 /////////////////////////////
 

@@ -17,13 +17,14 @@ html,
 /* Center the content in the browser window */
 .container {
   margin: auto;
-  background-color: aqua;
+  background-color: #c5e2f6;
   width: 50vh;
   height: 30vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  border-radius: 15px;
 }
 .left-container {
   margin: 5px;
@@ -74,8 +75,18 @@ button {
   width: 20%;
 }
 
+.eich-image{
+  width: 8vw;
+  height: 8vw;
+  background-color: aqua;
+}
+
 .title {
-  font-size: 3rem;
+  font-size: 3.4vw;
+}
+
+.sub-header{
+  width: 80%;
 }
 
 .form-login{
