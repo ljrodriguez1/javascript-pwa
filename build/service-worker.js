@@ -5,7 +5,7 @@ importScripts('https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/8.4.1/firebase-messaging.js');
 
 let cacheName = "my-first-pwa";
-let filesToCache = ["/", "/index.html", "/main_page.html","/css/style.css", "main.js"];
+let filesToCache = ["/", "/index.html", "/sign_in.html", "/main_page.html","/css/style.css", "main.js"];
 
 
 /* Start the service worker and cache all of the app's content */

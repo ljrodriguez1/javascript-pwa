@@ -6,7 +6,7 @@
     <title>WhatsOffline</title>
     <link rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="/manifest.json" />
+    <!-- <link rel="manifest" href="/manifest.json" /> -->
     <link rel="apple-touch-icon" href="images/pwa-icon-256.png" />
     <meta name="theme-color" content="white" />
   </head>
@@ -19,9 +19,8 @@
       <img class="eich-image" src="./images/eich-image.jpeg"/>
       <h1 class="title">My First PWA!</h1>
       <p class="sub-header">Trabajo hecho por el gran grupo EICH con ganas de superar lo hecho en la entrega pasada</p>
-      <a href="main_page.html">Vamos al Chat</a>
     </div>
-    <script>
+    <!-- <script>
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("./service-worker.js").then((registration) => {
           console.log("Fue registrado con scope: ", registration.scope)
@@ -29,19 +28,19 @@
           console.log("Service worker failed", e)
         })
       }
-  </script>
+  </script> -->
   <div class="container">
-      <p>Registrate en nuestro maravilloso chat con tan solo tu email y una contraseña</p>
-      <div id="sign-up-container">
-      <div class="mb-3">
-        <input type="email" class="form-control" placeholder="Email" id="exampleInputEmail1" aria-describedby="emailHelp">
-      </div>
-      <div class="mb-3">
-        <input type="password" placeholder="password" class="form-control" id="exampleInputPassword1">
-      </div>
-      <button type="submit" id="signup" class="btn btn-primary">Submit</button>
+    <p>Ingresa nuestro maravilloso chat con tan solo tu email y una contraseña</p>
+    <div id="sign-up-container">
+    <div class="mb-3">
+      <input type="email" class="form-control" placeholder="Email" id="exampleInputEmail2" aria-describedby="emailHelp">
     </div>
+    <div class="mb-3">
+      <input type="password" placeholder="password" class="form-control" id="exampleInputPassword2">
+    </div>
+    <button type="submit" id="signin" class="btn btn-primary">Submit</button>
   </div>
+</div>
   <script src="main.js"></script>
   </body>
 </html>
