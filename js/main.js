@@ -1,6 +1,6 @@
 import $ from "jquery";
 
-import db from "./firebase"
+import {db} from "./firebase"
 
 
 $( "#chatButton" ).click(function() {
