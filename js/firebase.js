@@ -9,6 +9,8 @@ import "firebase/analytics";
 // Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/messaging";
+
 
 
 var firebaseConfig = {
@@ -28,106 +30,9 @@ if (firebase.apps.length === 0) {
 
 const db = firebase.firestore();
 /////////////////////////////
-function check_signup(email, password) {
-  console.log(firebase)
-  console.log("EMAIL", email)
-  console.log("PASSWORD", password)
-  const user = firebase.auth().createUserWithEmailAndPassword(email, password)
-  .then((userCredential) => {
-      // Signed inxs
-      console.log("????")
-      var user = userCredential.user;
-      console.log("YEY")
-      console.log(user)
-      return user
-      // ...
-  })
-  .catch((error) => {
-      console.log("DALEEEE")
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log("MALO", errorCode, errorMessage)
-      return null
-      // ..
-  });
-  const user2 = current_user();
-  console.log(typeof user2)
-  console.log("$", user2)
-  console.log("????")
-  console.log(user.uid)
-  console.log("NO DEBERIA SER ACA")
-  return user
-}
-/////////////////////////////
-
-
-//function current_user() {
-//
-//  firebase.auth().onAuthStateChanged(function(user) {
-//    if (user) {
-//      // User is signed in.
-//      let user_id = user.uid
-//      console.log("ID", user_id)
-//      return user
-//    } else {
-//      // No user is signed in.
-//      console.log("NOBODY IS SIGNED IN")
-//      return null
-//    }
-//  });
-//}
-
-function current_user() {
-  var user = firebase.auth().currentUser
-  if (user) {
-    // User is signed in.
-    return user
-  } else {
-    // No user is signed in.
-    console.log("NOBODY HERE")
-  }
-}
-
-/////////////////////////////
-
-function sign_in(email, password){
-  const user = firebase.auth().signInWithEmailAndPassword(email, password).then(
-    function(user){
-      console.log("HAY USUARIO")
-      console.log(user)
-      return user;
-
-    }
-  ).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
-    return null;
-});
-return user;
-
-}
-
-/////////////////////////////
-
-async function sign_out() {
-  console.log("OUTTT")
-  const nose = await firebase.auth().signOut().then(() => {
-    // Sign-out successful.
-    console.log("??!!")
-    return true
-  }).catch((error) => {
-    // An error happened.
-    console.log("EEOR", error)
-    return false
-  });
-  console.log("VEAMOS EL ONOSE", nose)
-  return nose
-}
 
 /////////////////////////////
 
 
-export {db, check_signup, sign_out, sign_in, current_user, firebase};
+export {db,  firebase};
+export const messaging = firebase.messaging()

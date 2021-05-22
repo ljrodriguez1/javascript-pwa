@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <title>WhatsOffline</title>
     <link rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,20 +10,39 @@
     <link rel="apple-touch-icon" href="images/pwa-icon-256.png" />
     <meta name="theme-color" content="white" />
   </head>
-  <body class="fullscreen">
-    <div class="container">
-      <h1 class="title">My First PWA!</h1>
-      <a href="main_page.html">Vamos al Chat</a>
+  <body>
+    <div class="nav-bar">
+      <a class="btn btn-secondary btn-block buttonL" href="sign_in.html" role="button">Sign In</a>
+      <a class="btn btn-primary btn-block buttonL" href="index.html" role="button">Sign Up</a>
     </div>
-    <script src="main.js"></script>
-    <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("./service-worker.js").then((registration) => {
-          console.log("Fue registrado con scope: ", registration.scope)
-        }).catch((e) => {
-          console.log("Service worker failed", e)
-        })
-      }
+    <div class="full-screen">
+      <div class="container">
+        <img class="eich-image" src="./images/eich-image.jpeg"/>
+        <h1 class="title">WhatsOffline!</h1>
+        <p class="sub-header">Trabajo hecho por el gran grupo EICH con ganas de superar lo hecho en la entrega pasada</p>
+      </div>
+      <div class="container">
+          <p class="container-title">Registrate en nuestro maravilloso chat con tan solo tu email y una contraseña</p>
+          <div id="sign-up-container">
+          <div class="mb-3">
+            <input type="email" class="form-control" placeholder="Email" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <input type="password" placeholder="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <button type="submit" id="signup" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./firebase-messaging-sw.js").then((registration) => {
+        console.log("Fue registrado con scope: ", registration.scope)
+      }).catch((e) => {
+        console.log("Service worker failed", e)
+      })
+    }
   </script>
+  <script src="main.js"></script>
   </body>
 </html>
