@@ -51,7 +51,7 @@ $( "#sign-out" ).click(function() {
 })
 
 firebase.auth().onAuthStateChanged(function(user) {
-  const url = dev
+  const url = prod
   console.log("EL USER", user)
   let unsubscribe = false
   if (user) {

@@ -9,8 +9,7 @@ body {
 html,
 .full-screen {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 0;
   padding: 0;
@@ -45,8 +44,9 @@ html,
 /* Center the content in the browser window */
 .container {
   margin-top: 5%;
+  margin: 50px;
   background-color: #c5e2f6;
-  width: 30vw;
+  width: 400px;
   height: 400px;
   display: flex;
   flex-direction: column;
