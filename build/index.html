@@ -12,24 +12,15 @@
   </head>
   <body>
     <div class="nav-bar">
-      <a class="btn btn-primary btn-block" href="sign_in.html" role="button">Sign In</a>
-      <a class="btn btn-primary btn-block" href="index.html" role="button">Sign Up</a>
+      <a class="btn btn-secondary btn-block buttonL" href="sign_in.html" role="button">Sign In</a>
+      <a class="btn btn-primary btn-block buttonL" href="index.html" role="button">Sign Up</a>
     </div>
     <div class="full-screen">
       <div class="container">
         <img class="eich-image" src="./images/eich-image.jpeg"/>
-        <h1 class="title">My First PWA!</h1>
+        <h1 class="title">WhatsOffline!</h1>
         <p class="sub-header">Trabajo hecho por el gran grupo EICH con ganas de superar lo hecho en la entrega pasada</p>
       </div>
-      <script>
-        if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("./firebase-messaging-sw.js").then((registration) => {
-            console.log("Fue registrado con scope: ", registration.scope)
-          }).catch((e) => {
-            console.log("Service worker failed", e)
-          })
-        }
-      </script>
       <div class="container">
           <p class="container-title">Registrate en nuestro maravilloso chat con tan solo tu email y una contraseña</p>
           <div id="sign-up-container">
@@ -43,6 +34,15 @@
         </div>
       </div>
     </div>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./firebase-messaging-sw.js").then((registration) => {
+        console.log("Fue registrado con scope: ", registration.scope)
+      }).catch((e) => {
+        console.log("Service worker failed", e)
+      })
+    }
+  </script>
   <script src="main.js"></script>
   </body>
 </html>

@@ -6,7 +6,7 @@ importScripts('https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/8.4.1/firebase-messaging.js');
 
 let cacheName = "my-first-pwa";
-let filesToCache = ["/", "/index.html", "/main_page.html","/css/style.css", "main.js"];
+let filesToCache = ["/", "/index.html", "/main_page.html", "/sign_in.html", "/css/style.css", "main.js"];
 
 
 /* Start the service worker and cache all of the app's content */
@@ -54,10 +54,10 @@ messaging.onBackgroundMessage((payload) => {
 });
 
 /* Serve cached content when offline */
-self.addEventListener("fetch", (e) => {
-  e.respondWith(
-    caches.match(e.request).then((response) => {
-      return response || fetch(e.request);
-    })
-  );
-})
+//self.addEventListener("fetch", (e) => {
+//  e.respondWith(
+//    caches.match(e.request).then((response) => {
+//      return response || fetch(e.request);
+//    })
+//  );
+//})

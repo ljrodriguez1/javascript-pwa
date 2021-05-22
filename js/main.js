@@ -51,7 +51,7 @@ $( "#sign-out" ).click(function() {
 })
 
 firebase.auth().onAuthStateChanged(function(user) {
-  const url = prod
+  const url = dev
   console.log("EL USER", user)
   let unsubscribe = false
   if (user) {
@@ -75,7 +75,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       unsubscribe = false
     }
 
-    if (location.href !== url + "/") {
+    if (location.href !== url + "/" && location.href !== url + "/sign_in.html" && location.href !== url + "/") {
       location.href = url
     }
     // User is signed out.
