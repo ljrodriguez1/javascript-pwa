@@ -86,7 +86,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   } else {
     console.log("SIGNED OUT")
     if (location.href !== "http://localhost:9000/") {
-      location.href = "http://localhost:9000"
+      // location.href = "http://localhost:9000"
     }
     // User is signed out.
     // ...

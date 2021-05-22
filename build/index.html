@@ -10,16 +10,16 @@
     <link rel="apple-touch-icon" href="images/pwa-icon-256.png" />
     <meta name="theme-color" content="white" />
   </head>
-  <body class="fullscreen">
-    <!-- <div class="nav-bar">
-      <a href="sign_in.html">Sign In</a>
-      <a href="index.html">Sign Up</a>
-    </div> -->
+  <body>
+    <div class="nav-bar">
+      <a class="btn btn-primary btn-block" href="sign_in.html" role="button">Sign In</a>
+      <a class="btn btn-primary btn-block" href="index.html" role="button">Sign Up</a>
+    </div>
+    <div class="full-screen">
     <div class="container">
       <img class="eich-image" src="./images/eich-image.jpeg"/>
       <h1 class="title">My First PWA!</h1>
       <p class="sub-header">Trabajo hecho por el gran grupo EICH con ganas de superar lo hecho en la entrega pasada</p>
-      <a href="main_page.html">Vamos al Chat</a>
     </div>
     <script>
       if ("serviceWorker" in navigator) {
@@ -31,7 +31,7 @@
       }
   </script>
   <div class="container">
-      <p>Registrate en nuestro maravilloso chat con tan solo tu email y una contraseña</p>
+      <p class="container-title">Registrate en nuestro maravilloso chat con tan solo tu email y una contraseña</p>
       <div id="sign-up-container">
       <div class="mb-3">
         <input type="email" class="form-control" placeholder="Email" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -42,6 +42,7 @@
       <button type="submit" id="signup" class="btn btn-primary">Submit</button>
     </div>
   </div>
+</div>
   <script src="main.js"></script>
   </body>
 </html>
