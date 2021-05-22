@@ -1,14 +1,34 @@
-// import {db, firebase} from './firebase';
+import {db, messaging} from './firebase';
 
 // const messaging = firebase.messaging();
 
-messaging.getToken({
-    vapidKey: 'BKYPTjqCHiB7E-smNWiaz8ktJ84yJepq8O6c0v5bvHZfPc88lmVV1fZRcwxwiiZsyNjH6WgZUlEUTMCO-2DVy_w',
-    serviceWorkerRegistration: "service-worker.js" }).then(
+messaging
+ .requestPermission()
+ .then(function () {
+    console.log("Notification permission granted4.");
+ })
+ .catch(function (err) {
+    console.log("Unable to get permission to notify.", err);
+  });
+
+messaging.onMessage((payload)=>{
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
+    body: payload.notification.body,
+  };
+  if (notificationTitle) {
+    window.alert(notificationTitle+ ": " +notificationOptions.body);
+  }
+})
+
+
+
+export function sendSubscriptionIDToFirestore(userId) {  
+  messaging.getToken({
+    vapidKey: 'BKYPTjqCHiB7E-smNWiaz8ktJ84yJepq8O6c0v5bvHZfPc88lmVV1fZRcwxwiiZsyNjH6WgZUlEUTMCO-2DVy_w'}).then(
       (token) => {
           if (token) {
-            console.log("SEND TOKEN TO FIRESTORE")
-            sendSubscriptionIDToFirestore(token)
+            db.collection('users').doc(userId).set({token}, {merge: true})
           }
           else {
             console.log('No registration token available. Request permission to generate one.');
@@ -16,11 +36,7 @@ messaging.getToken({
       }
   ).catch( (error) => {
   console.log(error)
-})
-
-function sendSubscriptionIDToFirestore(token) {
-    console.log("Subscription ID", token);
-    // Send here to firestore
+  })
 }
 
 // //---extract the subscription id and send it over to the REST service---
