@@ -16,33 +16,33 @@
       <a class="btn btn-primary btn-block" href="index.html" role="button">Sign Up</a>
     </div>
     <div class="full-screen">
-    <div class="container">
-      <img class="eich-image" src="./images/eich-image.jpeg"/>
-      <h1 class="title">My First PWA!</h1>
-      <p class="sub-header">Trabajo hecho por el gran grupo EICH con ganas de superar lo hecho en la entrega pasada</p>
-    </div>
-    <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("./service-worker.js").then((registration) => {
-          console.log("Fue registrado con scope: ", registration.scope)
-        }).catch((e) => {
-          console.log("Service worker failed", e)
-        })
-      }
-  </script>
-  <div class="container">
-      <p class="container-title">Registrate en nuestro maravilloso chat con tan solo tu email y una contraseña</p>
-      <div id="sign-up-container">
-      <div class="mb-3">
-        <input type="email" class="form-control" placeholder="Email" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div class="container">
+        <img class="eich-image" src="./images/eich-image.jpeg"/>
+        <h1 class="title">My First PWA!</h1>
+        <p class="sub-header">Trabajo hecho por el gran grupo EICH con ganas de superar lo hecho en la entrega pasada</p>
       </div>
-      <div class="mb-3">
-        <input type="password" placeholder="password" class="form-control" id="exampleInputPassword1">
+      <script>
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("./firebase-messaging-sw.js").then((registration) => {
+            console.log("Fue registrado con scope: ", registration.scope)
+          }).catch((e) => {
+            console.log("Service worker failed", e)
+          })
+        }
+      </script>
+      <div class="container">
+          <p class="container-title">Registrate en nuestro maravilloso chat con tan solo tu email y una contraseña</p>
+          <div id="sign-up-container">
+          <div class="mb-3">
+            <input type="email" class="form-control" placeholder="Email" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <input type="password" placeholder="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <button type="submit" id="signup" class="btn btn-primary">Submit</button>
+        </div>
       </div>
-      <button type="submit" id="signup" class="btn btn-primary">Submit</button>
     </div>
-  </div>
-</div>
   <script src="main.js"></script>
   </body>
 </html>

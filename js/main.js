@@ -1,6 +1,12 @@
 import $ from "jquery";
 
-import {db, check_signup, sign_out, current_user, sign_in, firebase } from "./firebase"
+import {db, firebase } from "./firebase"
+import {check_signup, sign_out, current_user, sign_in} from './auth' 
+import { sendSubscriptionIDToFirestore } from './notification'
+import "./notification"
+
+const prod = 'https://pwaeich.surge.sh'
+const dev = 'http://localhost:9000'
 
 
 $( "#chatButton" ).click(function() {
@@ -11,7 +17,7 @@ $( "#chatButton" ).click(function() {
     console.log("VEAMOS", user.uid) // eso es lo que queremos
     // db.collection('messages').add({text: str, user: "Lucas", date: new Date()})
     if (user !== null){
-      db.collection('users').doc(user.uid).collection('messages').add({text: str, user: "Lucas", date: new Date()})
+      db.collection('groups').doc('123456789').collection('messages').add({text: str, user: user.email, date: new Date(), userId: user.uid})
     } else {
       console.log("NOT USER SIGN IN")
     }
@@ -20,31 +26,14 @@ $( "#chatButton" ).click(function() {
 });
 
 $( "#signup" ).click(function() {
-  console.log("YAPO CTM")
-  console.log("YAPO CTM")
   let email = $( "#exampleInputEmail1" ).val()
   let password = $( "#exampleInputPassword1" ).val()
-  console.log("EMAIL", email)
-  console.log("password", password)
   const user = check_signup(email, password)
-  if (user.email){
-    db.collection('users').doc(user.uid).collection('messages').orderBy("date").onSnapshot((data)=>{
-      $('#chatList').empty()
-      data.docs.forEach((doc)=>{
-        $('#chatList').append(`<div id="chatText">${doc.data().text}</div>`);
-      })
-    })
-    location.href = "http://localhost:9000/main_page.html";
-  }
 })
 
 $( "#signin" ).click(function() {
-  console.log("YAPO CTM3")
-  console.log("YAPO CTM3")
   let email = $( "#exampleInputEmail2" ).val()
   let password = $( "#exampleInputPassword2" ).val()
-  console.log("EMAIL", email)
-  console.log("password", password)
   const user = sign_in(email, password)
   console.log(user)
   if (user.email){
@@ -58,35 +47,36 @@ $( "#signin" ).click(function() {
 })
 
 $( "#sign-out" ).click(function() {
-  console.log("YAPO CTM2")
-  console.log("YAPO CTM2")
-  if (sign_out()){
-    location.href = 'http://localhost:9000'
-  } else{
-    console.log("PROBLEMAS CON SIGN OUT")
-  }
+  sign_out()
 })
 
 firebase.auth().onAuthStateChanged(function(user) {
+  const url = prod
   console.log("EL USER", user)
+  let unsubscribe = false
   if (user) {
-    // User is signed in.
-    console.log("WOWW")
-    var displayName = user.displayName;
     var email = user.email;
-    var emailVerified = user.emailVerified;
-    var photoURL = user.photoURL;
-    var isAnonymous = user.isAnonymous;
     var uid = user.uid;
-    var providerData = user.providerData;
-    if (location.href != "http://localhost:9000/main_page.html") {
-      location.href = "http://localhost:9000/main_page.html"
+    db.collection('users').doc(uid).set({email}, {merge: true})
+    sendSubscriptionIDToFirestore(uid)
+    unsubscribe = db.collection('groups').doc('123456789').collection('messages').orderBy("date").onSnapshot((data)=>{
+      $('#chatList').empty()
+      data.docs.forEach((doc)=>{
+        $('#chatList').append(`<div id="chatText">${doc.data().text}</div>`);
+      })
+    })
+    if (location.href != url + "/main_page.html") {
+      location.href = url + "/main_page.html"
     }
     // ...
   } else {
-    console.log("SIGNED OUT")
-    if (location.href !== "http://localhost:9000/") {
-      // location.href = "http://localhost:9000"
+    if (unsubscribe) {
+      unsubscribe()
+      unsubscribe = false
+    }
+
+    if (location.href !== url + "/") {
+      location.href = url
     }
     // User is signed out.
     // ...

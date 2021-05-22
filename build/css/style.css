@@ -1,5 +1,7 @@
 body {
   font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Make content area fill the entire browser window */
@@ -12,7 +14,16 @@ html,
   margin: 0;
   padding: 0;
   width: 100%;
-  background-color: black;
+}
+
+.fullscreen-chat{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-y: hidden;
 }
 
 .nav-bar{
@@ -28,11 +39,15 @@ html,
 
 #sign-out{
   border-radius: 10px;
+  width: 10%;
+  background-color: red;
+  font-style:oblique
 }
 
 /* Center the content in the browser window */
 .container {
   margin: auto;
+  margin-top: 5%;
   background-color: #c5e2f6;
   width: 50vh;
   height: 30vw;
@@ -60,6 +75,7 @@ html,
   -moz-box-shadow: 10px 10px 6px -6px #777;
   box-shadow: 10px 10px 6px -6px #777;
   background-color: white;
+  overflow-x: scroll;
 }
 
 .right-container {
@@ -72,10 +88,23 @@ html,
 
 .actual-user {
   height: 8%;
+  min-height: 50px;
   width: 100%;
   background-color: white;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+.actual-user-info{
+  display: flex;
+  flex-direction: row;
+}
+#current-user{
+  margin-left: 10%;
+}
+
+#chatList{
+  overflow-y: scroll;
 }
 
 .chat-container {
@@ -87,6 +116,7 @@ html,
   display: flex;
   flex-direction: row;
   height: 5%;
+  min-height: 30px;
   width: 100%;
   background-color: white;
 }
@@ -102,7 +132,6 @@ button {
 .eich-image{
   width: 8vw;
   height: 8vw;
-  background-color: aqua;
 }
 
 .title {
@@ -114,7 +143,6 @@ button {
 }
 
 .form-login{
-  background-color: rgb(187, 255, 0);
   height: 50%;
   width: 90%;
 }
@@ -131,7 +159,6 @@ img {
 }
 
 .container-title{
-  background-color: aqua;
   font-size: 1.3vw;
   width: 80%;
 }
@@ -153,6 +180,14 @@ img {
 
 
 @media (max-width: 850px) {
+
+  .user {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    border-bottom: 1px solid grey;
+  }
+
   html,
   .fullscreen {
     display: flex;
@@ -165,12 +200,22 @@ img {
     overflow-x: hidden;
   }
 
+  .fullscreen-chat{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-y: hidden;
+  }
+
   .container {
     margin: auto;
     margin-top: 10%;
     background-color: #c5e2f6;
     width: 50vh;
-    height: 50vw;
+    height: 60vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -179,15 +224,14 @@ img {
   }
 
   .container-title{
-    background-color: aqua;
     font-size: 2.5vw;
+    margin-top: 3%;
     width: 80%;
   }
 
   .eich-image{
     width: 10vw;
     height: 10vw;
-    background-color: aqua;
   }
 
   .left-container {
@@ -196,15 +240,17 @@ img {
     flex-direction: row;
     width: 100%;
     height: 20%;
-    -webkit-box-shadow: 10px 10px 6px -6px #777;
-    -moz-box-shadow: 10px 10px 6px -6px #777;
-    box-shadow: 10px 10px 6px -6px #777;
+    min-height: 120px;
+    -webkit-box-shadow: 10px 10px 6px -6px white;
+    -moz-box-shadow: 10px 10px 6px -6px white;
+    box-shadow: 10px 10px 6px -6px white;
     background-color: white;
     overflow-x: scroll;
   }
 
   #sign-out{
     border-radius: 10px;
+    min-width: 80px;
     
   }
   .right-container {
