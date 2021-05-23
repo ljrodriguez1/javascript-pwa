@@ -10,6 +10,7 @@ const dev = 'http://localhost:9000'
 
 
 $( "#chatButton" ).click(function() {
+  console.log("DALEE")
   var str = $("#chatInput").val();
   if (str) {
     let user = current_user();

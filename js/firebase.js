@@ -12,7 +12,6 @@ import "firebase/firestore";
 import "firebase/messaging";
 
 
-
 var firebaseConfig = {
     apiKey: "AIzaSyD2eR7xpxrAOk320MjWSaQdu4_y2aVxA4s",
     authDomain: "pwa-reich.firebaseapp.com",
