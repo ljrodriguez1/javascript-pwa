@@ -14,7 +14,6 @@ $( "#chatButton" ).click(function() {
   var str = $("#chatInput").val();
   if (str) {
     let user = current_user();
-    console.log("VEAMOS", user.uid) // eso es lo que queremos
     // db.collection('messages').add({text: str, user: "Lucas", date: new Date()})
     if (user !== null){
       db.collection('groups').doc('123456789').collection('messages').add({text: str, user: user.email, date: new Date(), userId: user.uid})
@@ -35,7 +34,6 @@ $( "#signin" ).click(function() {
   let email = $( "#exampleInputEmail2" ).val()
   let password = $( "#exampleInputPassword2" ).val()
   const user = sign_in(email, password)
-  console.log(user)
   if (user.email){
     db.collection('users').doc(user.uid).collection('messages').orderBy("date").onSnapshot((data)=>{
       $('#chatList').empty()
@@ -52,7 +50,6 @@ $( "#sign-out" ).click(function() {
 
 firebase.auth().onAuthStateChanged(function(user) {
   const url = prod
-  console.log("EL USER", user)
   let unsubscribe = false
   if (user) {
     var email = user.email;
@@ -62,7 +59,11 @@ firebase.auth().onAuthStateChanged(function(user) {
     unsubscribe = db.collection('groups').doc('123456789').collection('messages').orderBy("date").onSnapshot((data)=>{
       $('#chatList').empty()
       data.docs.forEach((doc)=>{
-        $('#chatList').append(`<div id="chatText">${doc.data().text}</div>`);
+        if (user.uid === doc.data().userId){
+          $('#chatList').append(`<div id="ownChatText">${doc.data().text}</div>`);
+        } else {
+          $('#chatList').append(`<div id="foreignChatText">${doc.data().text}</div>`);
+        }
       })
     })
     if (location.href != url + "/main_page.html") {

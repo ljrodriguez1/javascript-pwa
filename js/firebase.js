@@ -23,6 +23,7 @@ var firebaseConfig = {
   };
 
 if (firebase.apps.length === 0) {
+  console.log("WII")
   firebase.initializeApp(firebaseConfig);
 }
 

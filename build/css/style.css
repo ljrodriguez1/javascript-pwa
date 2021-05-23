@@ -102,11 +102,41 @@ html,
 
 #chatList{
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;}
+
+#chatInput{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 80%;
 }
 
 .chat-container {
   height: 87%;
   width: 100%;
+}
+
+#ownChatText {
+  background-color: rgb(87, 219, 87);
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  height: fit-content;
+  width: fit-content;
+  max-width: 80%;
+  align-self: flex-end;
+  margin-right: 10px;
+}
+
+#foreignChatText {
+  background-color: rgb(223, 231, 108);
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  height: fit-content;
+  width: fit-content;
+  max-width: 80%;
+  margin-left: 10px;
 }
 
 .input-container {
