@@ -10,11 +10,9 @@ const dev = 'http://localhost:9000'
 
 
 $( "#chatButton" ).click(function() {
-  console.log("DALEE")
   var str = $("#chatInput").val();
   if (str) {
     let user = current_user();
-    console.log("VEAMOS", user.uid) // eso es lo que queremos
     // db.collection('messages').add({text: str, user: "Lucas", date: new Date()})
     if (user !== null){
       db.collection('groups').doc('123456789').collection('messages').add({text: str, user: user.email, date: new Date(), userId: user.uid})
@@ -35,9 +33,7 @@ $( "#signin" ).click(function() {
   let email = $( "#exampleInputEmail2" ).val()
   let password = $( "#exampleInputPassword2" ).val()
   const user = sign_in(email, password)
-  console.log(user)
   if (user.email){
-    console.log("WOW 2")
     db.collection('users').doc(user.uid).collection('messages').orderBy("date").onSnapshot((data)=>{
       $('#chatList').empty()
       data.docs.forEach((doc)=>{
@@ -53,7 +49,6 @@ $( "#sign-out" ).click(function() {
 
 firebase.auth().onAuthStateChanged(function(user) {
   const url = prod
-  console.log("EL USER", user)
   let unsubscribe = false
   if (user) {
     var email = user.email;
@@ -75,9 +70,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
     // ...
   } else {
-    console.log("2")
     if (unsubscribe) {
-      console.log("3")
       unsubscribe()
       unsubscribe = false
     }
